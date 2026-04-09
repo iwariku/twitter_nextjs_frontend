@@ -1,11 +1,20 @@
-import React from 'react';
+import Form from 'next/form';
+import { SignUp } from '../../../features/auth/actions/actions';
 
-const page = () => {
+const SignUpPage = () => {
   return (
-    <div>
-      <h1>テスト</h1>
-    </div>
+    <Form action={SignUp}>
+      <h1>新規登録</h1>
+      <input type="email" name="email" placeholder="メールアドレス" required />
+      <input
+        type="password"
+        name="password"
+        placeholder="パスワード"
+        required
+      />
+      <button type="submit">新規登録</button>
+    </Form>
   );
 };
 
-export default page;
+export default SignUpPage;
