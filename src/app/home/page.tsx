@@ -1,11 +1,14 @@
 import React from 'react';
+import { authGuard } from '../../../features/auth/actions/actions';
 
-const page = () => {
+const HomePage = async () => {
+  await authGuard();
+
   return (
     <div>
-      <h1>テスト</h1>
+      <h1>ホーム画面</h1>
     </div>
   );
 };
 
-export default page;
+export default HomePage;
