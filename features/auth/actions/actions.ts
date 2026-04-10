@@ -67,11 +67,3 @@ export const getSessionId = async () => {
   const cookieStore = await cookies();
   return cookieStore.get('session_id')?.value;
 };
-
-export const authGuard = async () => {
-  const sessionId = await getSessionId();
-  if (!sessionId) {
-    redirect('/login');
-    return sessionId;
-  }
-};
