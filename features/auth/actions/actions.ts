@@ -8,7 +8,7 @@ export const SignUp = async (formData: FormData) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const response = await fetch('http://localhost:8080/signup', {
+  const response = await fetch(`${process.env.API_BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const Login = async (formData: FormData) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const response = await fetch('http://localhost:8080/login', {
+  const response = await fetch(`${process.env.API_BASE_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
