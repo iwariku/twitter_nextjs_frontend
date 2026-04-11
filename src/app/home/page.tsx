@@ -1,11 +1,11 @@
 import React from 'react';
 
-const page = () => {
+const HomePage = async () => {
   return (
     <div>
-      <h1>テスト</h1>
+      <h1>ホーム画面</h1>
     </div>
   );
 };
 
-export default page;
+export default HomePage;
