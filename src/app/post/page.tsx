@@ -1,6 +1,6 @@
 import Form from 'next/form';
 import React from 'react';
-import { CreatePost } from '../../../features/post/actions/actions';
+import { CreateTweet } from '../../../features/post/actions/actions';
 
 const Post = () => {
   return (
@@ -10,7 +10,7 @@ const Post = () => {
 
         <h1 className="text-3xl font-bold mb-10 text-black">投稿</h1>
 
-        <Form action={CreatePost} className="w-full max-w-[300px] space-y-6">
+        <Form action={CreateTweet} className="w-full max-w-[300px] space-y-6">
           <div className="space-y-4">
             <textarea
               name="content"

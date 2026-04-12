@@ -7,7 +7,7 @@ import { getSessionId } from '../../auth/actions/actions';
 // 引数formDataからテキストの情報を取得
 // method: POSTでテキストの内容を/postに送信
 
-export const CreatePost = async (formData: FormData) => {
+export const CreateTweet = async (formData: FormData) => {
   const sessionId = await getSessionId();
   const content = formData.get('content');
 
