@@ -15,7 +15,7 @@ const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
           >
             <div className="flex items-center gap-2">
               <span className="font-bold text-[15px] hover:underline">
-                User ID: {tweet.userId}
+                User ID: {tweet.user_id}
               </span>
             </div>
 
