@@ -1,5 +1,5 @@
 import Sidebar from '@/components/layouts/Sidebar';
-import TweetCard from '../../../features/post/components/TweetCard';
+import TweetCard from '../../../features/post/components/TweetList';
 import { getTweets } from '../../../features/post/api/getTweets';
 import Pagination from '@/components/layouts/Pagination';
 

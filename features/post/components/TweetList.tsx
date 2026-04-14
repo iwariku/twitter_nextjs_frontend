@@ -1,6 +1,6 @@
 import { Tweet } from '../types/types';
 
-const TweetCard = ({ tweets }: { tweets: Tweet[] }) => {
+const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
   return (
     <main className="flex-1 min-h-screen border-r border-gray-100">
       <div className="sticky top-0 bg-white/80 backdrop-blur-sm p-4 border-b border-gray-100 z-10">
@@ -29,4 +29,4 @@ const TweetCard = ({ tweets }: { tweets: Tweet[] }) => {
   );
 };
 
-export default TweetCard;
+export default TweetList;
