@@ -15,9 +15,12 @@ export const getTweets = async (limit: number = 10, offset: number = 0) => {
   );
 
   if (!response.ok) {
-    return [];
+    return { tweets: [], count: 0 };
   }
 
-  const { tweets } = await response.json();
-  return tweets || [];
+  const { tweets, count } = await response.json();
+  return {
+    tweets: tweets || [],
+    count: count || 0,
+  };
 };

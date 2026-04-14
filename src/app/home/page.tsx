@@ -17,7 +17,8 @@ const HomePage = async ({ searchParams }: PropsType) => {
   const prevOffset = Math.max(0, currentOffset - LIMIT);
   const nextOffset = currentOffset + LIMIT;
 
-  const tweets = await getTweets(LIMIT, currentOffset);
+  const { tweets, count } = await getTweets(LIMIT, currentOffset);
+  console.log(count);
   return (
     <div className="flex min-h-screen bg-white max-w-[1300px] mx-auto text-black">
       <Sidebar />
@@ -36,6 +37,8 @@ const HomePage = async ({ searchParams }: PropsType) => {
       >
         次へ
       </Link>
+
+      <h5>{`ツイート全件数:${count}`}</h5>
     </div>
   );
 };
