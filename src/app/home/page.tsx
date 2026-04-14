@@ -24,12 +24,7 @@ const HomePage = async ({ searchParams }: PropsType) => {
       <div className="flex-1 flex flex-col border-r border-gray-100">
         <TweetList tweets={tweets} />
 
-        <Pagination
-          LIMIT={LIMIT}
-          offset={currentOffset}
-          count={count}
-          tweetsLength={tweets.length}
-        />
+        <Pagination LIMIT={LIMIT} offset={currentOffset} count={count} />
       </div>
     </div>
   );
