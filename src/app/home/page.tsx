@@ -8,9 +8,12 @@ type PropsType = {
 };
 
 const HomePage = async ({ searchParams }: PropsType) => {
-  const { offset } = await searchParams;
-  const currentOffset = Number(offset) || 0;
   const LIMIT = 10;
+
+  const { offset } = await searchParams;
+  const parsedOffset = Number(offset) || 0;
+  // offsetは0であることを証明するため。負の値になることはない
+  const currentOffset = Math.max(0, parsedOffset);
 
   const { tweets, count } = await getTweets(LIMIT, currentOffset);
 

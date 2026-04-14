@@ -15,7 +15,7 @@ export const getTweets = async (limit: number = 10, offset: number = 0) => {
   );
 
   if (!response.ok) {
-    return { tweets: [], count: 0 };
+    throw new Error(`APIリクエストに失敗しました: ${response.status}`);
   }
 
   const { tweets, count } = await response.json();
