@@ -2,7 +2,7 @@ import { Tweet } from '../types/types';
 
 const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
   return (
-    <main className="flex-1 min-h-screen border-r border-gray-100">
+    <>
       <div className="sticky top-0 bg-white/80 backdrop-blur-sm p-4 border-b border-gray-100 z-10">
         <h2 className="text-xl font-bold">ホーム画面</h2>
       </div>
@@ -15,7 +15,7 @@ const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
           >
             <div className="flex items-center gap-2">
               <span className="font-bold text-[15px] hover:underline">
-                User ID: {tweet.user_id}
+                User ID: {tweet.userId}
               </span>
             </div>
 
@@ -25,7 +25,7 @@ const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
           </div>
         ))}
       </div>
-    </main>
+    </>
   );
 };
 

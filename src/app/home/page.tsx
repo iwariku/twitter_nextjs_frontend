@@ -1,7 +1,7 @@
 import Sidebar from '@/components/layouts/Sidebar';
-import TweetCard from '../../../features/post/components/TweetList';
 import { getTweets } from '../../../features/post/api/getTweets';
 import Pagination from '@/components/layouts/Pagination';
+import TweetList from '../../../features/post/components/TweetList';
 
 type PropsType = {
   searchParams: Promise<{ offset?: string }>;
@@ -19,7 +19,7 @@ const HomePage = async ({ searchParams }: PropsType) => {
       <Sidebar />
 
       <div className="flex-1 flex flex-col border-r border-gray-100">
-        <TweetCard tweets={tweets} />
+        <TweetList tweets={tweets} />
 
         <Pagination
           LIMIT={LIMIT}
