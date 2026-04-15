@@ -3,10 +3,6 @@ import { Tweet } from '../types/types';
 const TweetList = ({ tweets }: { tweets: Tweet[] }) => {
   return (
     <>
-      <div className="sticky top-0 bg-white/80 backdrop-blur-sm p-4 border-b border-gray-100 z-10">
-        <h2 className="text-xl font-bold">ホーム画面</h2>
-      </div>
-
       <div className="divide-y divide-gray-100">
         {tweets.map((tweet: Tweet) => (
           <div
