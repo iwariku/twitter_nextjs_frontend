@@ -1,5 +1,5 @@
 import Form from 'next/form';
-import { SignUp } from '../../../features/auth/actions/actions';
+import { SignUp } from '../../features/auth/actions/actions';
 import Image from 'next/image';
 import Link from 'next/link';
 
