@@ -1,18 +1,13 @@
-import { getSessionId } from '@/features/auth/actions/actions';
+import { getTweet } from '@/features/post/api/getTweets';
 
-const TweetDetail = async ({ params }) => {
-  const sessionId = await getSessionId();
+type PropsType = {
+  params: Promise<{ id: string }>;
+};
+
+const TweetDetail = async ({ params }: PropsType) => {
   const { id } = await params;
 
-  // ここを別で定義する場合は、getTweetという関数名にすればいい
-  const response = await fetch(`${process.env.API_BASE_URL}/api/tweets/${id}`, {
-    method: 'GET',
-    headers: {
-      Cookie: `session_id=${sessionId}`,
-    },
-  });
-
-  const tweet = await response.json();
+  const tweet = await getTweet(id);
 
   return (
     <div>
