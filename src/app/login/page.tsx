@@ -1,6 +1,6 @@
 import Form from 'next/form';
 import React from 'react';
-import { Login } from '../../../features/auth/actions/actions';
+import { Login } from '../../features/auth/actions/actions';
 import Image from 'next/image';
 import Link from 'next/link';
 

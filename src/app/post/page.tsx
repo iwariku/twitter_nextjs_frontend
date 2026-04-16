@@ -1,6 +1,6 @@
 import Form from 'next/form';
 import React from 'react';
-import { CreateTweet } from '../../../features/post/actions/actions';
+import { CreateTweet } from '../../features/post/actions/actions';
 
 const Post = () => {
   return (

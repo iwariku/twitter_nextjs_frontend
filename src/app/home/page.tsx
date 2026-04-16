@@ -1,7 +1,7 @@
 import Sidebar from '@/components/layouts/Sidebar';
-import { getTweets } from '../../../features/post/api/getTweets';
+import { getTweets } from '../../features/post/api/getTweets';
 import Pagination from '@/components/layouts/Pagination';
-import TweetList from '../../../features/post/components/TweetList';
+import TweetList from '../../features/post/components/TweetList';
 
 type PropsType = {
   searchParams: Promise<{ offset?: string }>;
