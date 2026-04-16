@@ -1,11 +1,22 @@
-import React from 'react';
+import { getUser } from '@/features/user/api/getUser';
+import FollowButton from '@/features/user/components/FollowButton';
 
-const page = () => {
+type PropsType = {
+  params: Promise<{ id: string }>;
+};
+
+const UserProfilePage = async ({ params }: PropsType) => {
+  const { id } = await params;
+
+  const user = await getUser(id);
+
   return (
     <div>
-      <h1>テスト</h1>
+      <FollowButton userId={id} initialIsFollowed={user.is_followed} />
+      <p>フォロー中 {user.following_count}</p>
+      <p>フォロワー {user.follower_count}</p>
     </div>
   );
 };
 
-export default page;
+export default UserProfilePage;
