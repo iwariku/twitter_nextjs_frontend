@@ -14,12 +14,23 @@ const UserProfilePage = async ({ params }: PropsType) => {
   return (
     <div>
       <FollowButton userId={id} currentFollowStatus={user.is_followed} />
-      <Link href={`/users/${id}/following`}>
-        フォロー中 {user.following_count}
-      </Link>
-      <Link href={`/users/${id}/follower`}>
-        フォロワー {user.follower_count}
-      </Link>
+      <div>
+        <Link
+          href={`/users/${id}/following`}
+          className="hover:underline flex gap-1"
+        >
+          <span>フォロー中</span>
+          <span>{user.following_count}</span>
+        </Link>
+
+        <Link
+          href={`/users/${id}/follower`}
+          className="hover:underline flex gap-1"
+        >
+          <span>フォロワー</span>
+          <span>{user.follower_count}</span>
+        </Link>
+      </div>
     </div>
   );
 };
