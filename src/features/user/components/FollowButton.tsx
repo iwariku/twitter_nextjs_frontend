@@ -5,23 +5,27 @@ import { CreateFollow, DeleteFollow } from '../actions/follow';
 
 type PropsType = {
   userId: string;
-  initialIsFollowed: boolean;
+  currentFollowStatus: boolean;
 };
 
-const FollowButton = ({ userId, initialIsFollowed }: PropsType) => {
-  // 初期値になるis_followdはboole型
-  const [isFollow, setIsFollow] = useState(initialIsFollowed);
+const FollowButton = ({ userId, currentFollowStatus }: PropsType) => {
+  const [isFollow, setIsFollow] = useState(currentFollowStatus);
+
+  const executeFollow = async () => {
+    setIsFollow(true);
+    await CreateFollow(userId);
+  };
+
+  const executeUnfollow = async () => {
+    setIsFollow(false);
+    await DeleteFollow(userId);
+  };
 
   const handleFollow = async () => {
-    const nextState = !isFollow; // 次の状態を計算しておく
-    setIsFollow(nextState);
-
-    if (nextState) {
-      console.log('これからフォローします');
-      await CreateFollow(userId);
+    if (isFollow) {
+      await executeUnfollow();
     } else {
-      console.log('これからフォロー解除します');
-      await DeleteFollow(userId);
+      await executeFollow();
     }
   };
 

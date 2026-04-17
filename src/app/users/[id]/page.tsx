@@ -13,7 +13,7 @@ const UserProfilePage = async ({ params }: PropsType) => {
 
   return (
     <div>
-      <FollowButton userId={id} initialIsFollowed={user.is_followed} />
+      <FollowButton userId={id} currentFollowStatus={user.is_followed} />
       <Link href={`/users/${id}/following`}>
         フォロー中 {user.following_count}
       </Link>
