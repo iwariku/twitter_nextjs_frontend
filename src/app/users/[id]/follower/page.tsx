@@ -10,14 +10,15 @@ type PropsType = {
 const FollowerPage = async ({ params }: PropsType) => {
   const { id } = await params;
 
-  const { follow_list } = await getFollowers(id);
+  // follow_listだと抽象的な変数名になるため、コンポーネント名と合わせて具体性を持たせる変数名を採用
+  const { follow_list: followerList } = await getFollowers(id);
 
   return (
     <>
       <PageTitle title="フォロワー一覧" />
 
       <div className="divide-y divide-gray-100">
-        {follow_list.map((user: User) => (
+        {followerList.map((user: User) => (
           <Link
             href={`/users/${user.id}`}
             key={user.id}

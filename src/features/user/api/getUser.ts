@@ -1,5 +1,5 @@
 import { getSessionId } from '@/features/auth/actions/actions';
-import { PaginatedFollowListResponse, User } from '../types/type';
+import { PaginatedFollowList, User } from '../types/type';
 
 export const getUser = async (userId: string): Promise<User> => {
   const sessionId = await getSessionId();
@@ -24,7 +24,7 @@ export const getUser = async (userId: string): Promise<User> => {
 
 export const getFollowings = async (
   userId: string,
-): Promise<PaginatedFollowListResponse> => {
+): Promise<PaginatedFollowList> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
@@ -47,7 +47,7 @@ export const getFollowings = async (
 
 export const getFollowers = async (
   userId: string,
-): Promise<PaginatedFollowListResponse> => {
+): Promise<PaginatedFollowList> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(

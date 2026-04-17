@@ -9,7 +9,7 @@ export type User = {
   is_followed: boolean;
 };
 
-export type PaginatedFollowListResponse = {
+export type PaginatedFollowList = {
   follow_list: User[];
   limit: number;
   offset: number;
