@@ -1,11 +1,22 @@
-import React from 'react';
+import PageTitle from '@/components/layouts/PageTitle';
+import { getTweet } from '@/features/post/api/getTweets';
+import TweetCard from '@/features/post/components/TweetCard';
 
-const page = () => {
+type PropsType = {
+  params: Promise<{ id: string }>;
+};
+
+const TweetDetailPage = async ({ params }: PropsType) => {
+  const { id } = await params;
+
+  const tweet = await getTweet(id);
+
   return (
-    <div>
-      <h1>テスト1</h1>
-    </div>
+    <>
+      <PageTitle title="ツイート詳細" />
+      <TweetCard tweet={tweet} isDetail={true} />
+    </>
   );
 };
 
-export default page;
+export default TweetDetailPage;
