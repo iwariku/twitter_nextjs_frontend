@@ -2,7 +2,7 @@ export type User = {
   id: number;
   user_name: string;
   self_introduction: string;
-  date_of_birth: Date;
+  date_of_birth: string;
   profile_image: string;
   following_count: number;
   follower_count: number;

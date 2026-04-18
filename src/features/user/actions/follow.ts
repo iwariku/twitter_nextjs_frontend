@@ -4,10 +4,7 @@ import { getSessionId } from '@/features/auth/actions/actions';
 import { revalidatePath } from 'next/cache';
 
 export const CreateFollow = async (userId: string) => {
-  console.log('CreateFollowアクションが実行されました。ID:', userId);
   const sessionId = await getSessionId();
-  const url = `${process.env.API_BASE_URL}/api/users/${userId}/follow`;
-  console.log('リクエスト送信先:', url);
 
   const response = await fetch(
     `${process.env.API_BASE_URL}/api/users/${userId}/follow`,
@@ -19,13 +16,15 @@ export const CreateFollow = async (userId: string) => {
     },
   );
 
-  revalidatePath('/users/[id]', 'page');
+  if (!response.ok) {
+    throw new Error(`フォローに失敗しました: ${response.status}`);
+  }
+
+  revalidatePath(`/users/${userId}`, 'layout');
 };
 
 export const DeleteFollow = async (userId: string) => {
   const sessionId = await getSessionId();
-
-  // true/falseを取得
 
   const response = await fetch(
     `${process.env.API_BASE_URL}/api/users/${userId}/follow`,
@@ -37,5 +36,9 @@ export const DeleteFollow = async (userId: string) => {
     },
   );
 
-  revalidatePath('/users/[id]', 'page');
+  if (!response.ok) {
+    throw new Error(`フォロー解除に失敗しました: ${response.status}`);
+  }
+
+  revalidatePath(`/users/${userId}`, 'layout');
 };

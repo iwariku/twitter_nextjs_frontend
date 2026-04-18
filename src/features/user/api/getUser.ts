@@ -41,7 +41,7 @@ export const getFollowings = async (
     throw new Error(`APIリクエストに失敗しました: ${response.status}`);
   }
 
-  const users = response.json();
+  const users = await response.json();
   return users;
 };
 
@@ -64,7 +64,7 @@ export const getFollowers = async (
     throw new Error(`APIリクエストに失敗しました: ${response.status}`);
   }
 
-  const users = response.json();
+  const users = await response.json();
   return users;
 };
 
