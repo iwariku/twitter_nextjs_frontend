@@ -1,4 +1,4 @@
-import { getUser } from '@/features/user/api/getUser';
+import { getUser } from '@/features/user/api/user';
 import FollowButton from '@/features/user/components/FollowButton';
 import Link from 'next/link';
 

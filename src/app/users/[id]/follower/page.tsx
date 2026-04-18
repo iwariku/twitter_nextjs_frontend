@@ -1,5 +1,5 @@
 import PageTitle from '@/components/layouts/PageTitle';
-import { getFollowers } from '@/features/user/api/getUser';
+import { getFollowers } from '@/features/user/api/user';
 import FollowButton from '@/features/user/components/FollowButton';
 import { User } from '@/features/user/types/type';
 import Link from 'next/link';
