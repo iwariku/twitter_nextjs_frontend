@@ -24,11 +24,13 @@ export const getUser = async (userId: string): Promise<User> => {
 
 export const getFollowings = async (
   userId: string,
+  limit: number,
+  offset: number,
 ): Promise<PaginatedFollowList> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/followings`,
+    `${process.env.API_BASE_URL}/api/users/${userId}/followings?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
@@ -47,11 +49,13 @@ export const getFollowings = async (
 
 export const getFollowers = async (
   userId: string,
+  limit: number,
+  offset: number,
 ): Promise<PaginatedFollowList> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/followers`,
+    `${process.env.API_BASE_URL}/api/users/${userId}/followers?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {

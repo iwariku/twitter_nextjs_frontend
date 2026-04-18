@@ -21,7 +21,12 @@ const HomePage = async ({ searchParams }: PropsType) => {
     <>
       <PageTitle title="ホーム画面" />
       <TweetList tweets={tweets} />
-      <Pagination LIMIT={LIMIT} offset={currentOffset} count={count} />
+      <Pagination
+        targetPath="/home"
+        LIMIT={LIMIT}
+        offset={currentOffset}
+        count={count}
+      />
     </>
   );
 };

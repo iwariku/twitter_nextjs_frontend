@@ -1,12 +1,13 @@
 import Link from 'next/link';
 
 type PropsType = {
+  targetPath: string;
   LIMIT: number;
   offset: number;
   count: number;
 };
 
-const Pagination = ({ LIMIT, offset, count }: PropsType) => {
+const Pagination = ({ targetPath, LIMIT, offset, count }: PropsType) => {
   const currentPage = Math.floor(offset / LIMIT) + 1;
   const maxPage = Math.ceil(count / LIMIT) || 1;
 
@@ -19,7 +20,7 @@ const Pagination = ({ LIMIT, offset, count }: PropsType) => {
   return (
     <div className="p-6 border-t border-gray-100 flex items-center justify-center gap-6">
       <Link
-        href={`/home?offset=${prevOffset}`}
+        href={`${targetPath}?offset=${prevOffset}`}
         className={`px-4 py-2 border rounded-full ${isFirstPage ? 'pointer-events-none opacity-30' : ''}`}
       >
         前へ
@@ -33,7 +34,7 @@ const Pagination = ({ LIMIT, offset, count }: PropsType) => {
       </div>
 
       <Link
-        href={`/home?offset=${nextOffset}`}
+        href={`${targetPath}?offset=${nextOffset}`}
         className={`px-4 py-2 border rounded-full ${isLastPage ? 'pointer-events-none opacity-30' : ''}`}
       >
         次へ
