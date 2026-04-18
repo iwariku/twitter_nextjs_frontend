@@ -11,21 +11,23 @@ type PropsType = {
 const FollowButton = ({ userId, currentFollowStatus }: PropsType) => {
   const [isFollow, setIsFollow] = useState(currentFollowStatus);
 
-  const executeFollow = async () => {
-    setIsFollow(true);
-    await CreateFollow(userId);
-  };
-
-  const executeUnfollow = async () => {
-    setIsFollow(false);
-    await DeleteFollow(userId);
-  };
-
   const handleFollow = async () => {
-    if (isFollow) {
-      await executeUnfollow();
-    } else {
-      await executeFollow();
+    // ボタンが押される「直前」の値を変数に保存
+    const previousState = isFollow;
+
+    // 画面表示を先に更新
+    setIsFollow(!previousState);
+
+    try {
+      if (previousState) {
+        await DeleteFollow(userId);
+      } else {
+        await CreateFollow(userId);
+      }
+    } catch (error) {
+      // 失敗したら「直前の状態」に戻す
+      setIsFollow(previousState);
+      console.error('エラーが発生しました。直前の状態に戻します', error);
     }
   };
 
