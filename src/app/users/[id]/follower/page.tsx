@@ -1,8 +1,9 @@
 import PageTitle from '@/components/layouts/PageTitle';
-import Pagination from '@/components/layouts/Pagination';
+import Pagination from '@/components/layouts/PaginationFooter';
 import { getFollowers } from '@/features/user/api/user';
 import FollowButton from '@/features/user/components/FollowButton';
 import { User } from '@/features/user/types/type';
+import { PAGINATION_LIMIT, parseOffset } from '@/utils/pagination';
 import Link from 'next/link';
 
 type PropsType = {
@@ -10,17 +11,15 @@ type PropsType = {
   searchParams: Promise<{ offset?: string }>;
 };
 
+const LIMIT = PAGINATION_LIMIT;
+
 const FollowerPage = async ({ params, searchParams }: PropsType) => {
   const { id } = await params;
+  const query = await searchParams;
 
-  // ページネーション
-  const LIMIT = 10;
-  const { offset } = await searchParams;
-  const parsedOffset = Number(offset) || 0;
-  // offsetは0であることを証明するため。負の値になることはない
-  const currentOffset = Math.max(0, parsedOffset);
+  const currentOffset = parseOffset(query);
 
-  // follow_listだと抽象的な変数名になるため、コンポーネント名と合わせて具体性を持たせる変数名を採用
+  // follow_listだと抽象的な変数名になるため、コンポーネント名と合わせて具体性を持たせる別の変数名を定義
   const { follow_list: followerList, count } = await getFollowers(
     id,
     LIMIT,
@@ -58,7 +57,6 @@ const FollowerPage = async ({ params, searchParams }: PropsType) => {
 
       <Pagination
         targetPath={`/users/${id}/follower`}
-        LIMIT={LIMIT}
         offset={currentOffset}
         count={count}
       />
