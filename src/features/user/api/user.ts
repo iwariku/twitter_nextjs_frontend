@@ -11,6 +11,7 @@ export const getUser = async (userId: string): Promise<User> => {
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -36,6 +37,7 @@ export const getFollowings = async (
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -61,6 +63,7 @@ export const getFollowers = async (
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -80,6 +83,7 @@ export const getLoggedUserId = async () => {
     headers: {
       Cookie: `session_id=${sessionId}`,
     },
+    cache: 'no-store',
   });
 
   if (!response.ok) {

@@ -34,6 +34,7 @@ export const getTweet = async (id: string): Promise<Tweet> => {
     headers: {
       Cookie: `session_id=${sessionId}`,
     },
+    cache: 'no-store',
   });
 
   if (!response.ok) {
