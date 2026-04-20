@@ -1,12 +1,16 @@
+import { PAGINATION_LIMIT } from '@/utils/pagination';
 import Link from 'next/link';
 
 type PropsType = {
-  LIMIT: number;
+  targetPath: string;
   offset: number;
   count: number;
 };
 
-const Pagination = ({ LIMIT, offset, count }: PropsType) => {
+// コンポーネントの外に定義するのは、画面が更新するたび「数値の10を代入する」という作業をさせないため
+const LIMIT = PAGINATION_LIMIT;
+
+const PaginationFooter = ({ targetPath, offset, count }: PropsType) => {
   const currentPage = Math.floor(offset / LIMIT) + 1;
   const maxPage = Math.ceil(count / LIMIT) || 1;
 
@@ -19,7 +23,7 @@ const Pagination = ({ LIMIT, offset, count }: PropsType) => {
   return (
     <div className="p-6 border-t border-gray-100 flex items-center justify-center gap-6">
       <Link
-        href={`/home?offset=${prevOffset}`}
+        href={`${targetPath}?offset=${prevOffset}`}
         className={`px-4 py-2 border rounded-full ${isFirstPage ? 'pointer-events-none opacity-30' : ''}`}
       >
         前へ
@@ -33,7 +37,7 @@ const Pagination = ({ LIMIT, offset, count }: PropsType) => {
       </div>
 
       <Link
-        href={`/home?offset=${nextOffset}`}
+        href={`${targetPath}?offset=${nextOffset}`}
         className={`px-4 py-2 border rounded-full ${isLastPage ? 'pointer-events-none opacity-30' : ''}`}
       >
         次へ
@@ -42,4 +46,4 @@ const Pagination = ({ LIMIT, offset, count }: PropsType) => {
   );
 };
 
-export default Pagination;
+export default PaginationFooter;

@@ -1,7 +1,7 @@
 import { getSessionId } from '../../auth/actions/actions';
 import { Tweet } from '../types/types';
 
-export const getTweets = async (limit: number = 10, offset: number = 0) => {
+export const getTweets = async (limit: number, offset: number) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
