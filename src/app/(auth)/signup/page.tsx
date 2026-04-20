@@ -1,10 +1,9 @@
 import Form from 'next/form';
-import React from 'react';
-import { Login } from '../../features/auth/actions/actions';
+import { SignUp } from '@/features/auth/actions/actions';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const LoginPage = () => {
+const SignUpPage = () => {
   return (
     <div className="min-h-screen bg-gray-600 flex items-center justify-center p-4">
       <div className="bg-white w-full max-w-[600px] min-h-[600px] rounded-2xl p-8 flex flex-col items-center">
@@ -12,9 +11,11 @@ const LoginPage = () => {
           <Image src="/logo-black.png" alt="X Logo" width={40} height={40} />
         </div>
 
-        <h1 className="text-3xl font-bold mb-10 text-black">ログイン</h1>
+        <h1 className="text-3xl font-bold mb-10 text-black">
+          アカウントを作成
+        </h1>
 
-        <Form action={Login} className="w-full max-w-[300px] space-y-6">
+        <Form action={SignUp} className="w-full max-w-[300px] space-y-6">
           <div className="space-y-4">
             <input
               type="email"
@@ -36,13 +37,13 @@ const LoginPage = () => {
             type="submit"
             className="w-full h-12 bg-black text-white rounded-full font-bold hover:bg-zinc-800 transition duration-200"
           >
-            ログイン
+            新規登録
           </button>
 
           <div className="text-sm text-center text-gray-600 mt-4">
-            アカウントをお持ちでない場合は
-            <Link href="/signup" className="text-sky-500 hover:underline">
-              新規登録
+            アカウントをお持ちの場合は
+            <Link href="/login" className="text-sky-500 hover:underline">
+              ログイン
             </Link>
           </div>
         </Form>
@@ -51,4 +52,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
