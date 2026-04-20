@@ -1,11 +1,14 @@
+import { getLoggedUserId } from '@/features/user/api/user';
 import Link from 'next/link';
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const { loggedUserId } = await getLoggedUserId();
+
   const menuItems = [
     { name: 'ホーム', href: '/home' },
     { name: 'チャット', href: '/dm-groups' },
     { name: 'ブックマーク', href: '/bookmarks' },
-    { name: 'プロフィール', href: '/users' },
+    { name: 'プロフィール', href: `/users/${loggedUserId}` },
     { name: '投稿', href: '/post' },
   ];
 

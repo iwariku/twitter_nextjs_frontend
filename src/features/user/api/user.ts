@@ -71,3 +71,21 @@ export const getFollowers = async (
   const users = await response.json();
   return users;
 };
+
+export const getLoggedUserId = async () => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(`${process.env.API_BASE_URL}/api/users/me`, {
+    method: 'GET',
+    headers: {
+      Cookie: `session_id=${sessionId}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`loggedUserIdの取得に失敗しました: ${response.status}`);
+  }
+
+  const loggedUserId = await response.json();
+  return loggedUserId;
+};
