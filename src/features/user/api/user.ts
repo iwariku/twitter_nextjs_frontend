@@ -71,6 +71,3 @@ export const getFollowers = async (
   const users = await response.json();
   return users;
 };
-
-// ユーザーに紐づくツイートを表示する関数
-export const getTweetByUser = async () => {};
