@@ -1,7 +1,10 @@
 import { getSessionId } from '../../auth/actions/actions';
 import { PaginatedTweets, Tweet } from '../types/types';
 
-export const getTweets = async (limit: number, offset: number) => {
+export const getTweets = async (
+  limit: number,
+  offset: number,
+): Promise<PaginatedTweets> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
@@ -19,11 +22,8 @@ export const getTweets = async (limit: number, offset: number) => {
     throw new Error(`APIリクエストに失敗しました: ${response.status}`);
   }
 
-  const { tweets, count } = await response.json();
-  return {
-    tweets: tweets || [],
-    count: count || 0,
-  };
+  const tweets = await response.json();
+  return tweets;
 };
 
 export const getTweet = async (id: string): Promise<Tweet> => {
