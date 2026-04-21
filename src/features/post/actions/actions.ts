@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { getSessionId } from '../../auth/actions/actions';
+import { revalidatePath } from 'next/cache';
 
 // ログインユーザー情報を取得
 // 引数formDataからテキストの情報を取得
@@ -27,4 +28,44 @@ export const CreateTweet = async (formData: FormData) => {
   }
 
   redirect('/home');
+};
+
+export const createLike = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/like`,
+    {
+      method: 'POST',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`いいねに失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
+};
+
+export const deleteLike = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/like`,
+    {
+      method: 'DELETE',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`いいね解除に失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
 };
