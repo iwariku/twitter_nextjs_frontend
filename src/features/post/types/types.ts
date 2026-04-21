@@ -4,6 +4,8 @@ export type Tweet = {
   content: string;
   like_count: number;
   is_liked: boolean;
+  retweet_count: number;
+  is_retweeted: boolean;
 };
 
 export type PaginatedTweets = {
