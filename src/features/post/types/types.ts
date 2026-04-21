@@ -1,6 +1,13 @@
 export type Tweet = {
-  id: number;
+  id: string;
   content: string;
-  user_id: number;
+  user_id: string;
   created_at: string;
+};
+
+export type PaginatedTweets = {
+  tweets: Tweet[];
+  limit: number;
+  offset: number;
+  count: number;
 };

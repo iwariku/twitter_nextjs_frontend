@@ -1,6 +1,6 @@
-import { getTweets } from '../../features/post/api/getTweets';
+import { getTweets } from '../../../features/post/api/getTweets';
 import Pagination from '@/components/layouts/PaginationFooter';
-import TweetList from '../../features/post/components/TweetList';
+import TweetList from '../../../features/post/components/TweetList';
 import PageTitle from '@/components/layouts/PageTitle';
 import { PAGINATION_LIMIT, parseOffset } from '@/utils/pagination';
 

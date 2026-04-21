@@ -8,23 +8,32 @@ type PropsType = {
 
 const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
   return (
-    <Link
-      href={`/post/${tweet.id}`}
-      className={'block p-4 transition hover:bg-gray-50/50 cursor-pointer'}
-    >
-      <div className="flex items-center gap-2 mb-2">
-        <span className={"font-bold hover:underline text-black  'text-[15px]"}>
-          User ID: {tweet.user_id}
-        </span>
-      </div>
+    <div className="relative border-b border-gray-100 transition hover:bg-gray-50/50 group">
+      <Link
+        href={`/post/${tweet.id}`}
+        className="absolute inset-0 z-0 w-full h-full"
+        aria-label="ツイート詳細を見る"
+      />
 
-      {/* 詳細の時は、文字サイズを大きくする*/}
-      <p
-        className={`whitespace-pre-wrap text-gray-900 ${isDetail ? 'text-lg leading-relaxed' : 'text-[15px] leading-6 mt-1'}`}
-      >
-        {tweet.content}
-      </p>
-    </Link>
+      <div className="relative p-4 z-10 pointer-events-none">
+        <div className="flex items-center gap-2 mb-2">
+          <Link
+            href={`/users/${tweet.user_id}`}
+            className="font-bold hover:underline text-black text-[15px] relative z-20 pointer-events-auto"
+          >
+            User ID: {tweet.user_id}
+          </Link>
+        </div>
+
+        <p
+          className={`whitespace-pre-wrap text-gray-900 ${
+            isDetail ? 'text-lg leading-relaxed' : 'text-[15px] leading-6 mt-1'
+          }`}
+        >
+          {tweet.content}
+        </p>
+      </div>
+    </div>
   );
 };
 

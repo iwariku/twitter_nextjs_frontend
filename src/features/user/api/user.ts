@@ -11,6 +11,7 @@ export const getUser = async (userId: string): Promise<User> => {
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -36,6 +37,7 @@ export const getFollowings = async (
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -61,6 +63,7 @@ export const getFollowers = async (
       headers: {
         Cookie: `session_id=${sessionId}`,
       },
+      cache: 'no-store',
     },
   );
 
@@ -72,5 +75,21 @@ export const getFollowers = async (
   return users;
 };
 
-// ユーザーに紐づくツイートを表示する関数
-export const getTweetByUser = async () => {};
+export const getLoggedUserId = async () => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(`${process.env.API_BASE_URL}/api/users/me`, {
+    method: 'GET',
+    headers: {
+      Cookie: `session_id=${sessionId}`,
+    },
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    throw new Error(`loggedUserIdの取得に失敗しました: ${response.status}`);
+  }
+
+  const loggedUserId = await response.json();
+  return loggedUserId;
+};
