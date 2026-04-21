@@ -1,8 +1,9 @@
 export type Tweet = {
   id: string;
-  content: string;
   user_id: string;
-  created_at: string;
+  content: string;
+  like_count: number;
+  is_liked: boolean;
 };
 
 export type PaginatedTweets = {
