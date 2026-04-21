@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Tweet } from '../types/types';
+import LikeButton from './LikeButton';
 
 type PropsType = {
   tweet: Tweet;
@@ -32,6 +33,10 @@ const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
         >
           {tweet.content}
         </p>
+
+        {/* いいね、リツイート、ブックマーク */}
+        <LikeButton tweetId={tweet.id} currentLikeStatus={tweet.is_liked} />
+        <span> {tweet.like_count}</span>
       </div>
     </div>
   );
