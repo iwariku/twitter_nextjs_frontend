@@ -6,6 +6,7 @@ export type Tweet = {
   is_liked: boolean;
   retweet_count: number;
   is_retweeted: boolean;
+  is_bookmarked: boolean;
 };
 
 export type PaginatedTweets = {
