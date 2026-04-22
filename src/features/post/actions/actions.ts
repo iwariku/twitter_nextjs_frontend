@@ -69,3 +69,43 @@ export const deleteLike = async (tweetId: string) => {
 
   revalidatePath('/', 'layout');
 };
+
+export const createRetweet = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/retweet`,
+    {
+      method: 'POST',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`リツイートに失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
+};
+
+export const deleteRetweet = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/retweet`,
+    {
+      method: 'DELETE',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`リツイートに失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
+};
