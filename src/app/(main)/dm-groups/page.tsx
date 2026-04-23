@@ -1,11 +1,34 @@
-import React from 'react';
+import PageTitle from '@/components/layouts/PageTitle';
+import { getGroups } from '@/features/dm/api/Groups';
+import { Group } from '@/features/dm/types/types';
+import Link from 'next/link';
 
-const page = () => {
+const DMGroupsPage = async () => {
+  const { groups } = await getGroups();
+  console.log(groups);
+
   return (
-    <div>
-      <h1>テスト</h1>
-    </div>
+    <>
+      <PageTitle title="グループ一覧" />
+      <div className="divide-y divide-gray-100">
+        {groups.map((group: Group) => (
+          <div
+            key={group.id}
+            className="relative border-b border-gray-100 transition hover:bg-gray-50/50 group"
+          >
+            <Link
+              href={`/dm-groups/${group.id}`}
+              className="absolute inset-0 z-0 w-full h-full"
+            />
+
+            <div className="relative p-4 z-10 pointer-events-none">
+              <div className="flex items-center gap-2 mb-2">{group.name}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
-export default page;
+export default DMGroupsPage;
