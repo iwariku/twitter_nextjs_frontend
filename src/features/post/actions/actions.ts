@@ -109,3 +109,43 @@ export const deleteRetweet = async (tweetId: string) => {
 
   revalidatePath('/', 'layout');
 };
+
+export const createBookmark = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
+    {
+      method: 'POST',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`ブックマークに失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
+};
+
+export const deleteBookmark = async (tweetId: string) => {
+  const sessionId = await getSessionId();
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
+    {
+      method: 'DELETE',
+      headers: {
+        Cookie: `session_id=${sessionId}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`ブックマーク解除に失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/', 'layout');
+};

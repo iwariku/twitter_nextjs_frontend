@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Tweet } from '../types/types';
 import LikeButton from './LikeButton';
 import RetweetButton from './RetweetButton';
+import BookmarkButton from './BookmarkButton';
 
 type PropsType = {
   tweet: Tweet;
@@ -48,6 +49,13 @@ const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
               currentRetweetStatus={tweet.is_retweeted}
             />
             <span> {tweet.retweet_count}</span>
+          </div>
+
+          <div>
+            <BookmarkButton
+              tweetId={tweet.id}
+              currentBookmarkStatus={tweet.is_bookmarked}
+            />
           </div>
         </div>
       </div>
