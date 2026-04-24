@@ -1,5 +1,6 @@
 import PageTitle from '@/components/layouts/PageTitle';
 import { getGroups } from '@/features/dm/api/Groups';
+import CreateGroupButton from '@/features/dm/components/CreateGroupButton';
 import { Group } from '@/features/dm/types/types';
 import Link from 'next/link';
 
@@ -10,6 +11,7 @@ const DMGroupsPage = async () => {
   return (
     <>
       <PageTitle title="グループ一覧" />
+      <CreateGroupButton />
       <div className="divide-y divide-gray-100">
         {groups.map((group: Group) => (
           <div
