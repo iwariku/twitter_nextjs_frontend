@@ -11,6 +11,7 @@ const MessagePage = async ({ params }: PropsType) => {
   const { id } = await params;
 
   const { messages } = await getMessages(id);
+  console.log(messages);
 
   // bindする
   // FormコンポーネントにはfromDataのみを引数に取るという性質があるため、idを先に紐づけておく
@@ -27,6 +28,8 @@ const MessagePage = async ({ params }: PropsType) => {
             className="relative border-b border-gray-100 transition hover:bg-gray-50/50 group"
           >
             <div className="relative p-4 z-10 pointer-events-none">
+              <div>{message.user_id}</div>
+
               <div className="flex items-center gap-2 mb-2">
                 {message.message}
               </div>

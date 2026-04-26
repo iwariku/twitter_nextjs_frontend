@@ -3,6 +3,7 @@ import { Tweet } from '../types/types';
 import LikeButton from './LikeButton';
 import RetweetButton from './RetweetButton';
 import BookmarkButton from './BookmarkButton';
+import { CardLayout } from '@/components/elements/CardLayout';
 
 type PropsType = {
   tweet: Tweet;
@@ -11,14 +12,8 @@ type PropsType = {
 
 const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
   return (
-    <div className="relative border-b border-gray-100 transition hover:bg-gray-50/50 group">
-      <Link
-        href={`/post/${tweet.id}`}
-        className="absolute inset-0 z-0 w-full h-full"
-        aria-label="ツイート詳細を見る"
-      />
-
-      <div className="relative p-4 z-10 pointer-events-none">
+    <CardLayout href={`/post/${tweet.id}`}>
+      <div className="flex flex-col">
         <div className="flex items-center gap-2 mb-2">
           <Link
             href={`/users/${tweet.user_id}`}
@@ -36,22 +31,21 @@ const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
           {tweet.content}
         </p>
 
-        {/* いいね、リツイート、ブックマーク */}
-        <div className="flex items-center gap-x-10">
-          <div>
+        <div className="flex items-center gap-x-10 mt-3">
+          <div className="flex items-center gap-1">
             <LikeButton tweetId={tweet.id} currentLikeStatus={tweet.is_liked} />
-            <span> {tweet.like_count}</span>
+            <span className="text-sm"> {tweet.like_count}</span>
           </div>
 
-          <div>
+          <div className="flex items-center gap-1">
             <RetweetButton
               tweetId={tweet.id}
               currentRetweetStatus={tweet.is_retweeted}
             />
-            <span> {tweet.retweet_count}</span>
+            <span className="text-sm"> {tweet.retweet_count}</span>
           </div>
 
-          <div>
+          <div className="flex items-center gap-1">
             <BookmarkButton
               tweetId={tweet.id}
               currentBookmarkStatus={tweet.is_bookmarked}
@@ -59,7 +53,7 @@ const TweetCard = ({ tweet, isDetail = false }: PropsType) => {
           </div>
         </div>
       </div>
-    </div>
+    </CardLayout>
   );
 };
 
