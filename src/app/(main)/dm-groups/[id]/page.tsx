@@ -1,6 +1,8 @@
+import DataList from '@/components/elements/DataList';
 import PageTitle from '@/components/layouts/PageTitle';
 import { createMessage } from '@/features/dm/actions/actions';
 import { getMessages } from '@/features/dm/api/Messages';
+import MessageCard from '@/features/dm/components/MessageCard';
 import Form from 'next/form';
 
 type PropsType = {
@@ -21,22 +23,9 @@ const MessagePage = async ({ params }: PropsType) => {
   return (
     <>
       <PageTitle title="メッセージ一覧" />
-      <div className="divide-y divide-gray-100">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className="relative border-b border-gray-100 transition hover:bg-gray-50/50 group"
-          >
-            <div className="relative p-4 z-10 pointer-events-none">
-              <div>{message.user_id}</div>
-
-              <div className="flex items-center gap-2 mb-2">
-                {message.message}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <DataList items={messages}>
+        {(item) => <MessageCard message={item} />}
+      </DataList>
 
       <Form action={createMessageSetedId}>
         <input
