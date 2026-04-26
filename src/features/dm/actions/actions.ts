@@ -64,3 +64,28 @@ export const addUserToGroup = async (formData: FormData) => {
   revalidatePath('/dm-groups', 'layout');
   redirect('/dm-groups');
 };
+
+export const createMessage = async (groupId: string, formData: FormData) => {
+  const sessionId = await getSessionId();
+
+  const message = formData.get('message');
+
+  const response = await fetch(
+    `${process.env.API_BASE_URL}/api/dm/groups/${groupId}/message`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: `session_id=${sessionId}`,
+      },
+      body: JSON.stringify({ message }),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`メッセージ送信に失敗しました: ${response.status}`);
+  }
+
+  revalidatePath('/dm-groups', 'layout');
+  redirect(`/dm-groups/${groupId}`);
+};
