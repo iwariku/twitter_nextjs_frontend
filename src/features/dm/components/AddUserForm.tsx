@@ -4,7 +4,7 @@ import { addUserToGroup } from '../actions/actions';
 const AddUserForm = () => {
   return (
     <div className="min-h-screen bg-gray-600 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-[600px] min-h-[600px] rounded-2xl p-8 flex flex-col items-center">
+      <div className="bg-white w-full max-w-[600px] min-h-[600px] rounded-2xl p-8 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold mb-10 text-black">ユーザー追加</h1>
 
         <Form

@@ -27,7 +27,10 @@ const MessagePage = async ({ params }: PropsType) => {
         {(item) => <MessageCard message={item} />}
       </DataList>
 
-      <Form action={createMessageSetedId}>
+      <Form
+        action={createMessageSetedId}
+        className="flex flex-col items-center space-y-4 p-4"
+      >
         <input
           type="text"
           name="message"
@@ -38,7 +41,7 @@ const MessagePage = async ({ params }: PropsType) => {
 
         <button
           type="submit"
-          className="w-full h-12 bg-black text-white rounded-full font-bold hover:bg-zinc-800 transition duration-200"
+          className="w-fit px-12 h-12 bg-black text-white rounded-full font-bold hover:bg-zinc-800 transition duration-200"
         >
           送信
         </button>

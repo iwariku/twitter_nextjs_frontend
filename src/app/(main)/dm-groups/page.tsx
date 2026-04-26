@@ -12,8 +12,11 @@ const DMGroupsPage = async () => {
   return (
     <>
       <PageTitle title="グループ一覧" />
-      <CreateGroupButton />
-      <AddUserButton />
+
+      <div className="flex justify-center gap-30 p-4 border-b border-gray-100">
+        <CreateGroupButton />
+        <AddUserButton />
+      </div>
 
       <DataList items={groups}>{(item) => <GroupCard group={item} />}</DataList>
     </>
