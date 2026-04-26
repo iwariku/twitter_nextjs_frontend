@@ -1,7 +1,8 @@
+import DataList from '@/components/elements/DataList';
 import PageTitle from '@/components/layouts/PageTitle';
 import PaginationFooter from '@/components/layouts/PaginationFooter';
 import { getTweetsByUserId } from '@/features/post/api/getTweets';
-import TweetList from '@/features/post/components/TweetList';
+import TweetCard from '@/features/post/components/TweetCard';
 import { getUser } from '@/features/user/api/user';
 import FollowButton from '@/features/user/components/FollowButton';
 import { PAGINATION_LIMIT, parseOffset } from '@/utils/pagination';
@@ -82,7 +83,10 @@ const UserProfilePage = async ({ params, searchParams }: PropsType) => {
         </div>
       </div>
 
-      <TweetList tweets={tweetsByUser} />
+      <DataList items={tweetsByUser}>
+        {(item) => <TweetCard tweet={item} />}
+      </DataList>
+
       <PaginationFooter
         targetPath={`/users/${userId}`}
         offset={currentOffset}
