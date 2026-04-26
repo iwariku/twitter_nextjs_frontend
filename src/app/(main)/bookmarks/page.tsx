@@ -1,7 +1,8 @@
+import DataList from '@/components/elements/DataList';
 import PageTitle from '@/components/layouts/PageTitle';
 import PaginationFooter from '@/components/layouts/PaginationFooter';
 import { getBookmarkedTweetsByUserID } from '@/features/post/api/getTweets';
-import TweetList from '@/features/post/components/TweetList';
+import TweetCard from '@/features/post/components/TweetCard';
 import { PAGINATION_LIMIT, parseOffset } from '@/utils/pagination';
 
 type PropsType = {
@@ -23,7 +24,9 @@ const BookmarkedTweetPage = async ({ searchParams }: PropsType) => {
   return (
     <>
       <PageTitle title="ブックマークしたツイート一覧" />
-      <TweetList tweets={bookmarkedTweets} />
+      <DataList items={bookmarkedTweets}>
+        {(item) => <TweetCard tweet={item} />}
+      </DataList>
       <PaginationFooter
         targetPath="/bookmarks"
         offset={currentOffset}
