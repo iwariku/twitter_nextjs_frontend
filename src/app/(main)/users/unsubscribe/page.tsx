@@ -1,9 +1,9 @@
-import UnsubscribeButton from '@/features/user/components/UnsubscribeButton';
+import UnsubscribeForm from '@/features/user/components/UnsubscribeForm';
 
 const UnsubscribePage = () => {
   return (
     <>
-      <UnsubscribeButton />
+      <UnsubscribeForm />
     </>
   );
 };
