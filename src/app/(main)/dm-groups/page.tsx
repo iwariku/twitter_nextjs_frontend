@@ -7,7 +7,6 @@ import GroupCard from '@/features/dm/components/GroupCard';
 
 const DMGroupsPage = async () => {
   const { groups } = await getGroups();
-  console.log(groups);
 
   return (
     <>
