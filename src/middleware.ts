@@ -15,6 +15,7 @@ export const config = {
     '/home/:path*',
     '/post/:path*',
     '/users/:path*',
+    '/bookmarks/:path*',
     '/dm-groups/:path*',
   ],
 };
