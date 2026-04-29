@@ -21,10 +21,8 @@ export const CreateTweet = async (formData: FormData) => {
     body: JSON.stringify({ content }),
   });
 
-  console.log(response.headers);
-
   if (!response.ok) {
-    console.log('投稿に失敗しました');
+    throw new Error(`投稿に失敗しました: ${response.status}`);
   }
 
   redirect('/home');

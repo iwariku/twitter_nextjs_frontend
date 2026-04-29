@@ -20,6 +20,5 @@ export const getMessages = async (groupId: string): Promise<Messages> => {
   }
 
   const messages = await response.json();
-  console.log(messages);
   return messages;
 };
