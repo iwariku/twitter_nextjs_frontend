@@ -10,6 +10,7 @@ const Sidebar = async () => {
     { name: 'ブックマーク', href: '/bookmarks' },
     { name: 'プロフィール', href: `/users/${loggedUserId}` },
     { name: '投稿', href: '/post' },
+    { name: '退会', href: '/users/unsubscribe' },
   ];
 
   return (
