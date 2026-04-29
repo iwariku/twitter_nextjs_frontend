@@ -15,7 +15,7 @@ export const createGroup = async (formData: FormData) => {
       'Content-Type': 'application/json',
       Cookie: `session_id=${sessionId}`,
     },
-    body: JSON.stringify({ Name: groupName }),
+    body: JSON.stringify({ name: groupName }),
   });
 
   if (!response.ok) {
