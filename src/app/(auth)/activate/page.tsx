@@ -1,3 +1,4 @@
+import { executeActivation } from '@/features/auth/api/activation';
 import Link from 'next/link';
 
 type PropsType = {
@@ -7,18 +8,7 @@ type PropsType = {
 const ActivationPage = async ({ searchParams }: PropsType) => {
   const { token } = await searchParams;
 
-  const response = await fetch(
-    `${process.env.API_BASE_URL}/activate?token=${token}`,
-    {
-      method: 'GET',
-    },
-  );
-
-  if (!response.ok) {
-    throw new Error(
-      `ユーザーアクティベーションに失敗しました: ${response.status}`,
-    );
-  }
+  await executeActivation(token);
 
   return (
     <div className="min-h-screen bg-gray-600 flex items-center justify-center p-4">
