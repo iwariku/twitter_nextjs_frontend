@@ -12,7 +12,7 @@ export const CreateTweet = async (formData: FormData) => {
   const sessionId = await getSessionId();
   const content = formData.get('content');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/post`, {
+  const response = await fetch(`${process.env.API_BASE_URL}/api/post`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
