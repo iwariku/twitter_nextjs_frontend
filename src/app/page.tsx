@@ -1,3 +1,7 @@
-export default function Home() {
-  return <div>プロジェクト準備完了</div>;
-}
+import { redirect } from 'next/navigation';
+
+const Home = () => {
+  redirect('/signup');
+};
+
+export default Home;
