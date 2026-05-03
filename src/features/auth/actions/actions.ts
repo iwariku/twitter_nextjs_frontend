@@ -8,13 +8,16 @@ export const SignUp = async (formData: FormData) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/signup`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/signup`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
     },
-    body: JSON.stringify({ email, password }),
-  });
+  );
 
   if (!response.ok) {
     console.error('新規登録に失敗しました');
@@ -28,7 +31,7 @@ export const Login = async (formData: FormData) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/login`, {
+  const response = await fetch(`${process.env.API_BASE_URL}/api/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
