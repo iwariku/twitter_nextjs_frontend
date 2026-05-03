@@ -3,7 +3,7 @@ export const executeActivation = async (token: string) => {
   const activationParams = new URLSearchParams({ token: token });
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/activate?${activationParams}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/activate?${activationParams}`,
     {
       method: 'GET',
     },

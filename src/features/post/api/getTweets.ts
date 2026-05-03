@@ -8,7 +8,7 @@ export const getTweets = async (
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets?limit=${limit}&offset=${offset}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
@@ -29,7 +29,7 @@ export const getTweets = async (
 export const getTweet = async (id: string): Promise<Tweet> => {
   const sessionId = await getSessionId();
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/tweets/${id}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${id}`, {
     method: 'GET',
     headers: {
       Cookie: `session_id=${sessionId}`,
@@ -53,7 +53,7 @@ export const getTweetsByUserId = async (
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/tweets?limit=${limit}&offset=${offset}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}/tweets?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
@@ -78,7 +78,7 @@ export const getBookmarkedTweetsByUserID = async (
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/user/bookmarks?limit=${limit}&offset=${offset}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/bookmarks?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {

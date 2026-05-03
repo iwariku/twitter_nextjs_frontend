@@ -5,7 +5,7 @@ export const getUser = async (userId: string): Promise<User> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}`,
     {
       method: 'GET',
       headers: {
@@ -31,7 +31,7 @@ export const getFollowings = async (
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/followings?limit=${limit}&offset=${offset}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}/followings?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
@@ -57,7 +57,7 @@ export const getFollowers = async (
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/followers?limit=${limit}&offset=${offset}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}/followers?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
@@ -78,7 +78,7 @@ export const getFollowers = async (
 export const getLoggedUserId = async () => {
   const sessionId = await getSessionId();
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/users/me`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/me`, {
     method: 'GET',
     headers: {
       Cookie: `session_id=${sessionId}`,

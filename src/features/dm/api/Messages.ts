@@ -5,7 +5,7 @@ export const getMessages = async (groupId: string): Promise<Messages> => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/dm/groups/${groupId}/messages`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/dm/groups/${groupId}/messages`,
     {
       method: 'GET',
       headers: {

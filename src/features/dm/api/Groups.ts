@@ -4,7 +4,7 @@ import { Groups } from '../types/types';
 export const getGroups = async (): Promise<Groups> => {
   const sessionId = await getSessionId();
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/dm/groups`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/dm/groups`, {
     method: 'GET',
     headers: {
       Cookie: `session_id=${sessionId}`,

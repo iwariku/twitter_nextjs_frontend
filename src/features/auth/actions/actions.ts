@@ -31,7 +31,7 @@ export const Login = async (formData: FormData) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/login`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
