@@ -7,7 +7,7 @@ export const unsubscribe = async () => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/user/unsubscribe`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/unsubscribe`,
     {
       method: 'DELETE',
       headers: {

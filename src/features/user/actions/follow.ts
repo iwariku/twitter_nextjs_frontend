@@ -7,7 +7,7 @@ export const CreateFollow = async (userId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/follow`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}/follow`,
     {
       method: 'POST',
       headers: {
@@ -27,7 +27,7 @@ export const DeleteFollow = async (userId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/users/${userId}/follow`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${userId}/follow`,
     {
       method: 'DELETE',
       headers: {

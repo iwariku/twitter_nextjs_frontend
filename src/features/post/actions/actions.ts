@@ -12,7 +12,7 @@ export const CreateTweet = async (formData: FormData) => {
   const sessionId = await getSessionId();
   const content = formData.get('content');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/post`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/post`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const createLike = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/like`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/like`,
     {
       method: 'POST',
       headers: {
@@ -52,7 +52,7 @@ export const deleteLike = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/like`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/like`,
     {
       method: 'DELETE',
       headers: {
@@ -72,7 +72,7 @@ export const createRetweet = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/retweet`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/retweet`,
     {
       method: 'POST',
       headers: {
@@ -92,7 +92,7 @@ export const deleteRetweet = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/retweet`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/retweet`,
     {
       method: 'DELETE',
       headers: {
@@ -112,7 +112,7 @@ export const createBookmark = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
     {
       method: 'POST',
       headers: {
@@ -132,7 +132,7 @@ export const deleteBookmark = async (tweetId: string) => {
   const sessionId = await getSessionId();
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tweets/${tweetId}/bookmark`,
     {
       method: 'DELETE',
       headers: {

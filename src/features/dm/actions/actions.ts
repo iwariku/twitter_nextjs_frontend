@@ -9,7 +9,7 @@ export const createGroup = async (formData: FormData) => {
 
   const groupName = formData.get('name');
 
-  const response = await fetch(`${process.env.API_BASE_URL}/api/dm/group`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/dm/group`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const addUserToGroup = async (formData: FormData) => {
   const addGroupId = Number(formData.get('group_id'));
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/dm/add-member`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/dm/add-member`,
     {
       method: 'POST',
       headers: {
@@ -60,7 +60,7 @@ export const createMessage = async (groupId: string, formData: FormData) => {
   const message = formData.get('message');
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/api/dm/groups/${groupId}/message`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/dm/groups/${groupId}/message`,
     {
       method: 'POST',
       headers: {
