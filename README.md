@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 概要
 
-## Getting Started
+本リポジトリは、Next.js × TypeSctipt を用いて開発した Twitter クローンアプリのフロントエンドです。
 
-First, run the development server:
+Go API サーバーと連携し、 モダンな SPA（Single Page Application）として設計・実装しており、 認証・投稿など、SNS に必要な主要機能を網羅しています。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## URL
+https://twitter-nextjs-frontend.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 使用技術
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- React 19.1.0
+- Next.js 15.5.15
+- TypeScript 5
+- Tailwind CSS 4
+- cookie 1.1.1
 
-## Learn More
+## 機能一覧
 
-To learn more about Next.js, take a look at the following resources:
+- サインアップ・ログイン
+- ユーザーアクティベーション(サインアップ時にGmailメール送信)
+- ツイート機能
+- いいね
+- リツイート
+- ブックマーク
+- フォロー
+- メッセージ機能(DM)
+- 退会機能
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 工夫した点
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- バックエンド（Go API）と完全に分離したフロントエンド構成で設計
 
-## Deploy on Vercel
+- 認証機能とその他の機能を分離し、認証・認可を実現  
+  （投稿機能などはログイン必須とし、middleware.tsで制御）
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ディレクトリ構成を機能単位（Feature単位）で整理  
+  → appディレクトリはルーティングのみに限定し、ロジックはfeatures配下に集約することで責務を分離
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Cookieからsession_idを取得し、投稿時などにユーザー情報を自動的に付与する設計
+
+- いいねボタン押下時に即座にUIへ反映されるよう、クライアントコンポーネントで実装
+
+## 技術選定理由
+
+- ページ遷移が多いSNSアプリケーションの特性を考慮し、App Routerによるルーティング管理が適していると判断
+
+- ファイルベースルーティングにより、URLパラメータやクエリの取得をディレクトリ構造と紐づけて管理できる  
+  → ルーティングとデータ取得処理の対応関係が明確になり、実装・保守の効率が向上
+
+- Server Components / Client Componentsの使い分けにより、パフォーマンスとUXの両立が可能
+
+## 今後の改善点（Future Improvements）
+
+- ユーザープロフィール編集機能の未実装
+  → ユーザー体験向上のため、プロフィール情報の更新機能を追加予定
+
+- サインアップ・ログイン時のバリデーション不足
+  → 不正な入力を防ぐため、フロントエンドでバリデーションを実装
+
+- 自分自身をフォローできてしまう仕様
+  → ビジネスロジックを修正し、自分自身をフォローできないよう制御
+  → 自身のプロフィール画面では、フォローボタンをプロフィール編集ボタンに変更
+
+- いいね・リツイート・フォロー数の不整合
+  → クライアント側で状態管理を行い、楽観的UI更新を導入することで、
+  　　ボタン操作時の即時反映とサーバー状態との整合性を確保
+
+- エラーハンドリングの不足
+  → API通信時の例外処理を強化し、失敗時にはUIの状態をロールバックするとともに、ユーザーへのフィードバックを表示
