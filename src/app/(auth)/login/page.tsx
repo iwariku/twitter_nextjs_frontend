@@ -20,6 +20,7 @@ const LoginPage = () => {
               type="email"
               name="email"
               placeholder="メールアドレス"
+              defaultValue="test01@example.com"
               required
               className="w-full h-12 px-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition text-black"
             />
@@ -27,6 +28,7 @@ const LoginPage = () => {
               type="password"
               name="password"
               placeholder="パスワード"
+              defaultValue="Pass1234!" // デモ用にパスワードを直接記述しておく
               required
               className="w-full h-12 px-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition text-black"
             />
