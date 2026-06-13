@@ -1,6 +1,6 @@
 // 追加行と削除行の合計が200行を超えた場合;
 const totalChanges = danger.github.pr.changes;
-if (totalChanges > 3) {
+if (totalChanges > 200) {
   warn('diffが200行を超えています');
 }
 
@@ -10,25 +10,6 @@ console.log(modifiedFilesCount);
 const createdFilesCount = danger.github.pr.created_files;
 const totalFiles = modifiedFilesCount + createdFilesCount;
 
-// わざとdiffをつけます
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-// テスト
-if (totalFiles > 1) {
+if (totalFiles > 10) {
   warn('編集ファイル数が10ファイル超えています');
 }
