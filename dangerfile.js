@@ -5,8 +5,9 @@ if (totalChanges > 3) {
 }
 
 // 編集ファイル数が10ファイルを超えた場合;
-const modifiedFilesCount = danger.github.pr.modified_files.length;
-const createdFilesCount = danger.github.pr.created_files.length;
+const modifiedFilesCount = danger.github.pr.modified_files;
+console.log(modifiedFilesCount);
+const createdFilesCount = danger.github.pr.created_files;
 const totalFiles = modifiedFilesCount + createdFilesCount;
 
 // わざとdiffをつけます
