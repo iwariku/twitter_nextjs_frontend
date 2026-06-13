@@ -16,6 +16,18 @@ const totalFiles = modifiedFilesCount + createdFilesCount;
 // テスト
 // テスト
 // テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
+// テスト
 if (totalFiles > 1) {
   warn('編集ファイル数が10ファイル超えています');
 }
