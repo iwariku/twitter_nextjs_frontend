@@ -1,4 +1,4 @@
-name: actions
+name: frontend
 
 on:
   push:
@@ -7,3 +7,31 @@ on:
   pull_request:
     branches:
       - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+      - run: npx danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
+# テスト
